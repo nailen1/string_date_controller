@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='string_date_controller',
-    version='0.1.0',
+    version='0.1.1',
     packages=find_packages(),
     install_requires=[
         'shining_pebbles',
