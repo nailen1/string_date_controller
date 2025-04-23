@@ -5,13 +5,13 @@ from shining_pebbles import get_today, get_yesterday
 def get_today_dashed():
     return get_today('%Y-%m-%d')
 
-def get_today_nodashed():
+def get_today_nondashed():
     return get_today('%Y%m%d')
 
 def get_yesterday_dashed():
     return get_yesterday('%Y-%m-%d')
 
-def get_yesterday_nodashed():
+def get_yesterday_nondashed():
     return get_yesterday('%Y%m%d')
 
 def get_first_date_of_month(date_str):

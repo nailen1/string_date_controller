@@ -8,6 +8,15 @@ A Python module for string date manipulation and formatting operations.
 - Date formatting: Convert dates between different formats
 - Date cropping: Crop dates to specific time periods
 - Date generation: Generate date sequences and ranges
+- Date extraction: Extract dates from file names and folders
+
+## Version History
+
+### v0.1.4 (2025-04-23)
+- Added file folder date extraction functionality
+- Improved type handling in date generation functions
+- Fixed bugs in date range generation
+- Standardized naming conventions (using 'nondashed' consistently)
 
 ## Installation
 
@@ -34,4 +43,12 @@ MIT License
 
 ## Author
 
-June Young Park (juneyoungpaak@gmail.com)
+**June Young Park**  
+AI Management Development Team Lead & Quant Strategist at LIFE Asset Management
+
+LIFE Asset Management is a hedge fund management firm that integrates value investing and engagement strategies with quantitative approaches and financial technology, headquartered in Seoul, South Korea.
+
+## Contact
+
+- Email: juneyoungpaak@gmail.com
+- Location: TWO IFC, Yeouido, Seoul

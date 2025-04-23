@@ -1,12 +1,13 @@
 from setuptools import setup, find_packages
 
+with open('requirements.txt') as f:
+    requirements = [line.strip() for line in f if line.strip()]
+
 setup(
     name='string_date_controller',
-    version='0.1.3',
+    version='0.1.4',
     packages=find_packages(),
-    install_requires=[
-        'shining_pebbles',
-    ],
+    install_requires=requirements,
     author='June Young Park',
     author_email='juneyoungpaak@gmail.com',
     description='A Python module for string date manipulation and formatting',

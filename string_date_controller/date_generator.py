@@ -1,5 +1,4 @@
 ### functional_programming
-
 from datetime import datetime, timedelta
 from typing import Union, List
 from functools import partial
@@ -13,17 +12,35 @@ def validate_dates(start: datetime, end: datetime) -> None:
    if start > end:
        raise ValueError("Start date must be earlier than or equal to end date")
 
-def convert_to_datetime(date_input: Union[str, int], date_format: str) -> datetime:
+def convert_date_string_to_datetime(date_input: Union[str, int], date_format: str) -> datetime:
    """Convert input to datetime object"""
    return datetime.strptime(str(date_input), date_format)
 
-def generate_date_range(start: datetime, end: datetime) -> List[datetime]:
-   """Generate list of datetime objects between two dates"""
-   return [start + timedelta(days=x) for x in range((end - start).days + 1)]
+map_date_string_to_datetime = convert_date_string_to_datetime
 
-def format_date(date: datetime, use_hyphen: bool) -> str:
+def generate_date_range(start_date: Union[str, int, datetime], end_date: Union[str, int, datetime]) -> List[datetime]:
+   """Generate list of datetime objects between two dates
+   
+   Args:
+       start_date: Start date as string, int, or datetime object
+       end_date: End date as string, int, or datetime object
+       
+   Returns:
+       List of datetime objects between start and end dates
+   """
+   # Convert to datetime if not already
+   if not isinstance(start_date, datetime):
+       start_date = convert_date_string_to_datetime(str(start_date), '%Y-%m-%d')
+   if not isinstance(end_date, datetime):
+       end_date = convert_date_string_to_datetime(str(end_date), '%Y-%m-%d')
+       
+   return [start_date + timedelta(days=x) for x in range((end_date - start_date).days + 1)]
+
+def convert_datetime_to_date_string(date: datetime, option_dashed: bool) -> str:
    """Convert datetime object to string in specified format"""
-   return date.strftime('%Y-%m-%d' if use_hyphen else '%Y%m%d')
+   return date.strftime('%Y-%m-%d' if option_dashed else '%Y%m%d')
+
+map_datetime_to_date_string = convert_datetime_to_date_string
 
 def get_all_dates_between_dates(start_date: Union[str, int], end_date: Union[str, int]) -> List[str]:
    """
@@ -41,20 +58,20 @@ def get_all_dates_between_dates(start_date: Union[str, int], end_date: Union[str
    """
    try:
        # 1. Parse date format
-       date_format, use_hyphen = parse_date_format(str(start_date))
+       date_format, option_dashed = parse_date_format(str(start_date))
        
        # 2. Convert to datetime objects
-       to_datetime = partial(convert_to_datetime, date_format=date_format)
-       start = to_datetime(start_date)
-       end = to_datetime(end_date)
+       to_datetime = partial(convert_date_string_to_datetime, date_format=date_format)
+       start_date_datetime = to_datetime(start_date)
+       end_date_datetime = to_datetime(end_date)
        
        # 3. Validate dates
-       validate_dates(start, end)
+       validate_dates(start_date_datetime, end_date_datetime)
        
        # 4. Generate and format date range
-       to_string = partial(format_date, use_hyphen=use_hyphen)
+       to_string = partial(convert_datetime_to_date_string, option_dashed=option_dashed)
        
-       return list(map(to_string, generate_date_range(start, end)))
+       return list(map(to_string, generate_date_range(start_date_datetime, end_date_datetime)))
        
    except ValueError as e:
        raise ValueError(f"Invalid date format or invalid date range: {str(e)}")
