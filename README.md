@@ -12,6 +12,9 @@ A Python module for string date manipulation and formatting operations.
 
 ## Version History
 
+### v0.1.5 (2025-04-23)
+- Fixed package deployment issues
+
 ### v0.1.4 (2025-04-23)
 - Added file folder date extraction functionality
 - Improved type handling in date generation functions
