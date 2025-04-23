@@ -12,6 +12,9 @@ A Python module for string date manipulation and formatting operations.
 
 ## Version History
 
+### v0.1.6 (2025-04-23)
+- Fixed dependency version format in requirements.txt
+
 ### v0.1.5 (2025-04-23)
 - Fixed package deployment issues
 

@@ -1,1 +1,1 @@
-shining_pebbles> 0.5.5
+shining_pebbles>=0.5.5
