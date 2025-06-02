@@ -13,6 +13,12 @@ A Python module for string date manipulation and formatting operations.
 
 ## Version History
 
+### v0.2.1 (2025-06-03)
+- Added monthly date pairs collection for time series analysis
+- Implemented functions to get month-end dates and their previous month-end dates
+- Added support for nested dictionary structure for year/month organization
+- Included month name mapping constants
+
 ### v0.2.0 (2025-06-02)
 - Major refactoring of historical dates collection functionality
 - Improved logging configuration for better application integration
