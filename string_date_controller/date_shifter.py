@@ -66,3 +66,12 @@ def get_date_n_months_after(date_str, n):
     date_obj = datetime.strptime(date_str, '%Y-%m-%d')   
     future_date = date_obj + relativedelta(months=n)   
     return f"{future_date.year}-{str(future_date.month).zfill(2)}-{str(future_date.day).zfill(2)}"
+
+def get_n_months_ago_last_date(date_ref: str, n: int) -> str:
+    return get_last_date_of_month(get_date_n_months_ago(date_ref, n))
+
+def get_n_years_ago_last_date(date_ref: str, n: int) -> str:
+    return get_last_date_of_month(get_date_n_years_ago(date_ref, n))
+
+def get_year_first_date_simple(date_ref: str) -> str:
+    return get_first_date_of_year(date_ref)

@@ -9,8 +9,13 @@ A Python module for string date manipulation and formatting operations.
 - Date cropping: Crop dates to specific time periods
 - Date generation: Generate date sequences and ranges
 - Date extraction: Extract dates from file names and folders
+- Historical dates collection: Dynamically collect reference dates for timeseries analysis
 
 ## Version History
+
+### v0.1.7 (2025-06-02)
+- Added historical dates collection functionality for timeseries analysis
+- Implemented functions to dynamically collect monthly, yearly, YTD, and inception dates
 
 ### v0.1.6 (2025-04-23)
 - Fixed dependency version format in requirements.txt
