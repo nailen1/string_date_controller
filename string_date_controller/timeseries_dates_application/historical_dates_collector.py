@@ -13,6 +13,7 @@ logging.basicConfig(format='%(message)s', level=logging.INFO)
 logger = logging.getLogger()
 
 def get_historical_timeseries_dates(dates, period_type, is_valid_fn, get_date_fn_regular, get_date_fn_month_end, date_ref=None, option_verbose=False):
+    date_ref = date_ref if date_ref else dates[-1]
     """Generic function for getting historical dates"""
     if is_month_end(date_ref):
         get_date_fn = get_date_fn_month_end
@@ -26,23 +27,23 @@ def get_historical_timeseries_dates(dates, period_type, is_valid_fn, get_date_fn
 
 def get_historical_month_dates(dates, date_ref=None, option_verbose=False):
     return get_historical_timeseries_dates(
-        date_ref, 
         dates, 
         '-month',
         is_n_month_ago_in_dates,
         get_date_n_months_ago,
         get_n_months_ago_last_date,
+        date_ref,
         option_verbose
     )
 
 def get_historical_year_dates(dates, date_ref=None, option_verbose=False):
     return get_historical_timeseries_dates(
-        date_ref, 
         dates, 
         '-year',
         is_n_year_ago_in_dates,
         get_date_n_years_ago,
         get_n_years_ago_last_date,
+        date_ref,
         option_verbose
     )
 
@@ -50,12 +51,12 @@ def get_ytd_date(dates, date_ref=None):
     """Get year-to-date starting date"""
     first_date_of_year = get_first_date_of_year(date_ref)
     if first_date_of_year in dates:
-        return {'ytd': first_date_of_year}
+        return {'YTD': first_date_of_year}
     else:
-        return {'ytd': dates[0]}
+        return {'YTD': dates[0]}
 
 def get_inception_date(dates):
-    return {'date_inception': dates[0]}
+    return {'Since Inception': dates[0]}
 
 def get_all_historical_dates(dates, date_ref=None, option_verbose=False):
     return {

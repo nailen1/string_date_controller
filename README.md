@@ -13,6 +13,11 @@ A Python module for string date manipulation and formatting operations.
 
 ## Version History
 
+### v0.1.10 (2025-06-02)
+- Fixed parameter order in historical date functions
+- Enhanced readability of output keys (YTD, Since Inception)
+- Fixed function call parameter alignment
+
 ### v0.1.9 (2025-06-02)
 - Improved API flexibility by making date_ref parameter optional with default value
 - Standardized parameter order across historical date collection functions
