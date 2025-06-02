@@ -13,6 +13,13 @@ A Python module for string date manipulation and formatting operations.
 
 ## Version History
 
+### v0.2.0 (2025-06-02)
+- Major refactoring of historical dates collection functionality
+- Improved logging configuration for better application integration
+- Added functional approach using reduce for combining historical dates
+- Enhanced month filtering to focus on 1, 3, 6 month periods
+- Renamed functions for better clarity and consistency
+
 ### v0.1.10 (2025-06-02)
 - Fixed parameter order in historical date functions
 - Enhanced readability of output keys (YTD, Since Inception)

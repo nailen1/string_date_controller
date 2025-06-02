@@ -5,7 +5,7 @@ with open('requirements.txt') as f:
 
 setup(
     name='string_date_controller',
-    version='0.1.10',
+    version='0.2.0',
     packages=find_packages(),
     install_requires=requirements,
     author='June Young Park',

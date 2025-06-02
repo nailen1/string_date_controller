@@ -8,8 +8,15 @@ from .date_shifter import (
     get_date_n_years_ago
 )
 
-logging.basicConfig(format='%(message)s', level=logging.INFO)
-logger = logging.getLogger()
+
+logger = logging.getLogger(__name__)
+if not logger.handlers:
+    handler = logging.StreamHandler()
+    handler.setFormatter(logging.Formatter('%(message)s'))
+    logger.addHandler(handler)
+    logger.setLevel(logging.INFO)
+    logger.propagate = False
+
 
 def is_month_end(date_ref):
     """Check if given date is the last day of the month"""
@@ -19,7 +26,6 @@ def is_month_end(date_ref):
         target_date = date_ref.date()
     else:
         target_date = date_ref
-    
     last_day_of_month = calendar.monthrange(target_date.year, target_date.month)[1]
     return target_date.day == last_day_of_month
 
