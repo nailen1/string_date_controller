@@ -13,6 +13,10 @@ A Python module for string date manipulation and formatting operations.
 
 ## Version History
 
+### v0.1.9 (2025-06-02)
+- Improved API flexibility by making date_ref parameter optional with default value
+- Standardized parameter order across historical date collection functions
+
 ### v0.1.8 (2025-06-02)
 - Added historical dates collection functionality for timeseries analysis
 - Implemented functions to dynamically collect monthly, yearly, YTD, and inception dates

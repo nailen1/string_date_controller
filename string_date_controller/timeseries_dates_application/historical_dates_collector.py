@@ -12,7 +12,7 @@ from string_date_controller.date_determinator import is_month_end, is_n_month_ag
 logging.basicConfig(format='%(message)s', level=logging.INFO)
 logger = logging.getLogger()
 
-def get_historical_timeseries_dates(date_ref, dates, period_type, is_valid_fn, get_date_fn_regular, get_date_fn_month_end, option_verbose=False):
+def get_historical_timeseries_dates(dates, period_type, is_valid_fn, get_date_fn_regular, get_date_fn_month_end, date_ref=None, option_verbose=False):
     """Generic function for getting historical dates"""
     if is_month_end(date_ref):
         get_date_fn = get_date_fn_month_end
@@ -24,7 +24,7 @@ def get_historical_timeseries_dates(date_ref, dates, period_type, is_valid_fn, g
     valid_periods = takewhile(is_valid, count(1))
     return list(map(create_date_dict, valid_periods))
 
-def get_historical_month_dates(date_ref, dates, option_verbose=False):
+def get_historical_month_dates(dates, date_ref=None, option_verbose=False):
     return get_historical_timeseries_dates(
         date_ref, 
         dates, 
@@ -35,7 +35,7 @@ def get_historical_month_dates(date_ref, dates, option_verbose=False):
         option_verbose
     )
 
-def get_historical_year_dates(date_ref, dates, option_verbose=False):
+def get_historical_year_dates(dates, date_ref=None, option_verbose=False):
     return get_historical_timeseries_dates(
         date_ref, 
         dates, 
@@ -46,7 +46,7 @@ def get_historical_year_dates(date_ref, dates, option_verbose=False):
         option_verbose
     )
 
-def get_ytd_date(date_ref, dates):
+def get_ytd_date(dates, date_ref=None):
     """Get year-to-date starting date"""
     first_date_of_year = get_first_date_of_year(date_ref)
     if first_date_of_year in dates:
@@ -57,10 +57,10 @@ def get_ytd_date(date_ref, dates):
 def get_inception_date(dates):
     return {'date_inception': dates[0]}
 
-def get_all_historical_dates(date_ref, dates, option_verbose=False):
+def get_all_historical_dates(dates, date_ref=None, option_verbose=False):
     return {
-        **get_historical_month_dates(date_ref, dates, option_verbose),
-        **get_historical_year_dates(date_ref, dates, option_verbose),
-        **get_ytd_date(date_ref, dates),
+        **get_historical_month_dates(dates, date_ref, option_verbose),
+        **get_historical_year_dates(dates, date_ref, option_verbose),
+        **get_ytd_date(dates, date_ref),
         **get_inception_date(dates)
     }
