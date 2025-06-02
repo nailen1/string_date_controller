@@ -13,7 +13,7 @@ A Python module for string date manipulation and formatting operations.
 
 ## Version History
 
-### v0.1.7 (2025-06-02)
+### v0.1.8 (2025-06-02)
 - Added historical dates collection functionality for timeseries analysis
 - Implemented functions to dynamically collect monthly, yearly, YTD, and inception dates
 
