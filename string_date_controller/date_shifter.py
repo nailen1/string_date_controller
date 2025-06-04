@@ -78,4 +78,4 @@ def get_n_years_ago_last_date(date_ref: str, n: int) -> str:
     return get_last_date_of_month(get_date_n_years_ago(date_ref, n))
 
 def get_year_first_date_simple(date_ref: str) -> str:
-    return get_first_date_of_year(date_ref)
+    return date_ref.split('-')[0] + '-01-01'

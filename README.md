@@ -13,6 +13,12 @@ A Python module for string date manipulation and formatting operations.
 
 ## Version History
 
+### v0.2.3 (2025-06-04)
+- Added yearly_dates_collector module for YTD date pair operations
+- Implemented functions to get YTD date pairs based on reference date or specific year
+- Optimized get_year_first_date_simple function for better performance
+- Added support for retrieving all existing years from date list
+
 ### v0.2.2 (2025-06-04)
 - Added get_last_date_of_year function to date_shifter module
 - Enhanced date manipulation capabilities for year-end operations
