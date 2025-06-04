@@ -37,6 +37,10 @@ def get_first_date_of_year(date_str):
     date_obj = datetime.strptime(date_str, '%Y-%m-%d')
     return f"{date_obj.year}-01-01"
 
+def get_last_date_of_year(date_str):
+    date_obj = datetime.strptime(date_str, '%Y-%m-%d')
+    return f"{date_obj.year}-12-31"
+
 def get_date_n_years_ago(date_str, n):
     date_obj = datetime.strptime(date_str, '%Y-%m-%d')
     past_date = date_obj - relativedelta(years=n)

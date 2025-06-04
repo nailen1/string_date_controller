@@ -13,6 +13,10 @@ A Python module for string date manipulation and formatting operations.
 
 ## Version History
 
+### v0.2.2 (2025-06-04)
+- Added get_last_date_of_year function to date_shifter module
+- Enhanced date manipulation capabilities for year-end operations
+
 ### v0.2.1 (2025-06-03)
 - Added monthly date pairs collection for time series analysis
 - Implemented functions to get month-end dates and their previous month-end dates
