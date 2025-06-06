@@ -22,7 +22,6 @@ def get_ytd_date_pair_of_year(dates: List[str], year: str=None) -> Tuple[str, st
 def get_all_exising_years(dates: List[str]) -> List[str]:
     return sorted(list(set(map(lambda date: date.split('-')[0], dates))))
 
-def get_all_data_ytd_date_pairs(dates: List[str]) -> List[Dict[str, Tuple[str, str]]]:
+def get_all_data_ytd_date_pairs(dates: List[str]) -> Dict[str, Tuple[str, str]]:
     existing_years = get_all_exising_years(dates)
-    return list(map(lambda year: {f'{year}': get_ytd_date_pair_of_year(dates, year)}, existing_years))
-
+    return {year: get_ytd_date_pair_of_year(dates, year) for year in existing_years}
