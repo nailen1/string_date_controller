@@ -3,7 +3,6 @@ from string_date_controller.date_shifter import (
     get_last_date_of_month, 
     get_date_n_months_ago
 )
-from collections import defaultdict
 
 def get_month_end_dates(dates):
     dates_month_end = list(filter(is_month_end, dates))
@@ -43,13 +42,13 @@ def get_monthly_date_pairs(dates):
         date_pairs.append((month_end_dates[-1], last_date))
     return date_pairs
 
-def create_nested_dict(date_pairs):
-    dct = defaultdict(dict)
+def map_date_pairs_to_dict(date_pairs):
+    dct = {}
     for date_pair in date_pairs:
         year, month, _ = date_pair[-1].split('-')
-        dct[year][month] = date_pair
-    return dict(dct)
+        dct[f'{year}-{month}'] = date_pair
+    return dct
 
 def get_all_data_monthly_date_pairs(dates):
     date_pairs = get_monthly_date_pairs(dates)
-    return create_nested_dict(date_pairs)
+    return map_date_pairs_to_dict(date_pairs)
