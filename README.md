@@ -13,9 +13,15 @@ A Python module for string date manipulation and formatting operations.
 
 ## Version History
 
+### v0.2.6 (2025-06-15)
+- Renamed functions in yearly_dates_collector for better clarity and consistency
+- Changed from YTD terminology to yearly for more accurate representation
+- Improved function naming conventions across the module
+
 ### v0.2.5 (2025-06-10)
 - Standardized date pair data output structures across modules
 - Improved consistency in date pair dictionary mapping
+- Enhanced data access patterns for time series analysis
 - Enhanced data access patterns for time series analysis
 
 ### v0.2.4 (2025-06-07)
