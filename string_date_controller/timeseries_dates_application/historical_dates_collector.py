@@ -67,7 +67,6 @@ def get_data_ytd_date(dates, date_ref=None):
 def get_data_inception_date(dates):
     return {'Since Inception': str(dates[0])}
 
-
 def get_all_data_historical_dates(dates, date_ref=None, option_verbose=False):
     """Functional approach using reduce"""
     month_list = get_data_historical_month_dates(dates, date_ref, option_verbose)
@@ -75,3 +74,8 @@ def get_all_data_historical_dates(dates, date_ref=None, option_verbose=False):
     ytd_dict = [get_data_ytd_date(dates, date_ref)]
     inception_dict = [get_data_inception_date(dates)]
     return reduce(operator.or_, month_list + year_list + ytd_dict + inception_dict, {})
+
+def get_all_data_historical_date_pairs(dates, date_ref=None, option_verbose=False):
+    date_ref = date_ref if date_ref else dates[-1]
+    dct = get_all_data_historical_dates(dates=dates, date_ref=date_ref, option_verbose=option_verbose)
+    return {label: (date, date_ref) for label, date in dct.items()}
