@@ -6,6 +6,8 @@ from string_date_controller.date_shifter import (
 
 def get_month_end_dates(dates):
     dates_month_end = list(filter(is_month_end, dates))
+    if not dates_month_end:
+        dates_month_end = [dates[-1]]
     return dates_month_end
 
 def adjust_first_and_last_date(dates, min_date, max_date):
@@ -25,6 +27,9 @@ def get_prev_month_end_dates_with_adjustment(dates):
     )
     return dates
 
+def has_dummy_pair(date_pairs):
+    return date_pairs[0][0] == date_pairs[0][1]
+
 def get_monthly_date_pairs(dates):
     first_date = dates[0]
     last_date = dates[-1]
@@ -40,6 +45,8 @@ def get_monthly_date_pairs(dates):
     date_pairs = list(zip(prev_month_end_dates, month_end_dates))
     if last_date not in month_end_dates:
         date_pairs.append((month_end_dates[-1], last_date))
+    if has_dummy_pair(date_pairs):
+        date_pairs = date_pairs[1:]
     return date_pairs
 
 def map_date_pairs_to_dict(date_pairs):
