@@ -27,8 +27,9 @@ def get_prev_month_end_dates_with_adjustment(dates):
     )
     return dates
 
-def has_dummy_pair(date_pairs):
+def has_dummy_pair_in_date_pairs(date_pairs):
     return date_pairs[0][0] == date_pairs[0][1]
+
 
 def get_monthly_date_pairs(dates):
     first_date = dates[0]
@@ -45,7 +46,7 @@ def get_monthly_date_pairs(dates):
     date_pairs = list(zip(prev_month_end_dates, month_end_dates))
     if last_date not in month_end_dates:
         date_pairs.append((month_end_dates[-1], last_date))
-    if has_dummy_pair(date_pairs):
+    if has_dummy_pair_in_date_pairs(date_pairs):
         date_pairs = date_pairs[1:]
     return date_pairs
 
